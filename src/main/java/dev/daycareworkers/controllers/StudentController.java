@@ -6,5 +6,6 @@ import org.springframework.stereotype.Controller;
 
 @Controller
 public class StudentController {
-
+    @Autowired
+    StudentService studentService;
 }

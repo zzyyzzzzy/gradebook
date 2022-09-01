@@ -25,4 +25,11 @@ public class StudentController {
         return this.studentService.findByFirstNameAndLastName(firstname, lastname);
     }
 
+    @DeleteMapping("/students/{id}")
+    @ResponseBody
+    public boolean deleteStudentById(@PathVariable String id){
+        int studentId = Integer.parseInt(id);
+        return this.studentService.deleteStudentById(studentId);
+    }
+
 }

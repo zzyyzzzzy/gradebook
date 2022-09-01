@@ -10,5 +10,6 @@ public interface StudentService {
 
     List<Student> findByFirstNameAndLastName(String firstname, String lastname);
 
+    boolean deleteStudentById(int id);
 
 }

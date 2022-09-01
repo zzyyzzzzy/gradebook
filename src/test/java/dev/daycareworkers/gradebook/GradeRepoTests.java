@@ -2,7 +2,9 @@ package dev.daycareworkers.gradebook;
 
 import dev.daycareworkers.entities.Behavior;
 import dev.daycareworkers.entities.Grade;
+import dev.daycareworkers.entities.Student;
 import dev.daycareworkers.repos.GradeRepo;
+import dev.daycareworkers.repos.StudentRepo;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,9 @@ public class GradeRepoTests {
 
     @Autowired
     GradeRepo gradeRepo;
+
+    @Autowired
+    StudentRepo studentRepo;
 
     @Test
     public void create_grade_test() {
@@ -33,6 +38,15 @@ public class GradeRepoTests {
         this.gradeRepo.save(grade2);
         List<Grade> studentGrades = this.gradeRepo.findGradesBySid(-1);
         Assertions.assertEquals(2,studentGrades.size());
+    }
+    @Test
+    void delete_grades_by_sid(){
+        Student student = new Student(0,"Billy","Bobson","William Bobson");
+        Student savedStudent = this.studentRepo.save(student);
+        Grade grade = new Grade(1,savedStudent.getSid(), 0, "test", Behavior.BAD);
+        Grade savedGrade = this.gradeRepo.save(grade);
+        this.gradeRepo.deleteBySid(savedStudent.getSid());
+        Assertions.assertFalse(this.gradeRepo.existsById(savedGrade.getGid()));
     }
 
 }

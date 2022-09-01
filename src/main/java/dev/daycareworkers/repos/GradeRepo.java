@@ -10,4 +10,6 @@ import java.util.List;
 public interface GradeRepo extends JpaRepository<Grade, Integer> {
 
     List<Grade> findGradesBySid(int sid);
+    void deleteBySid(int sId);
+
 }

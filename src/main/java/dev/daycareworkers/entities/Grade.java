@@ -17,6 +17,7 @@ public class Grade {
     @Column(name = "note")
     private String note;
     @Column(name = "behavior")
+    @Enumerated(EnumType.STRING)
     private Behavior behavior;
 
     public Grade() {

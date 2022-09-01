@@ -5,4 +5,6 @@ import dev.daycareworkers.entities.Student;
 public interface StudentService {
 
     Student registerStudent(Student student);
+
+
 }

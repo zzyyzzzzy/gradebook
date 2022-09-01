@@ -8,58 +8,68 @@ public class Student {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "student_id")
-    private int student_id;
+    @Column(name = "sid")
+    private int sid;
 
-    @Column(name = "first_name")
-    private String first_name;
+    @Column(name = "fname")
+    private String fname;
 
-    @Column(name = "last_name")
-    private String last_name;
+    @Column(name = "lname")
+    private String lname;
 
-    @Column(name = "guardian_name")
-    private String guardian_name;
+    @Column(name = "gname")
+    private String gname;
 
     public Student() {
     }
 
-    public Student(int student_id, String first_name, String last_name, String guardian_name) {
-        this.student_id = student_id;
-        this.first_name = first_name;
-        this.last_name = last_name;
-        this.guardian_name = guardian_name;
+    public Student(int sid, String fname, String lname, String gname) {
+        this.sid = sid;
+        this.fname = fname;
+        this.lname = lname;
+        this.gname = gname;
     }
 
-    public int getStudent_id() {
-        return student_id;
+    public int getSid() {
+        return sid;
     }
 
-    public void setStudent_id(int student_id) {
-        this.student_id = student_id;
+    public void setSid(int sid) {
+        this.sid = sid;
     }
 
-    public String getFirst_name() {
-        return first_name;
+    public String getFname() {
+        return fname;
     }
 
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
+    public void setFname(String fname) {
+        this.fname = fname;
     }
 
-    public String getLast_name() {
-        return last_name;
+    public String getLname() {
+        return lname;
     }
 
-    public void setLast_name(String last_name) {
-        this.last_name = last_name;
+    public void setLname(String lname) {
+        this.lname = lname;
     }
 
-    public String getGuardian_name() {
-        return guardian_name;
+    public String getGname() {
+        return gname;
     }
 
-    public void setGuardian_name(String guardian_name) {
-        this.guardian_name = guardian_name;
+    public void setGname(String gname) {
+        this.gname = gname;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "sid=" + sid +
+                ", fname='" + fname + '\'' +
+                ", lname='" + lname + '\'' +
+                ", gname='" + gname + '\'' +
+                '}';
     }
 
     @Override
@@ -67,22 +77,12 @@ public class Student {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Student student = (Student) o;
-        return student_id == student.student_id && first_name.equals(student.first_name) && last_name.equals(student.last_name) && guardian_name.equals(student.guardian_name);
+        return sid == student.sid && fname.equals(student.fname) && lname.equals(student.lname) && gname.equals(student.gname);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(student_id, first_name, last_name, guardian_name);
-    }
-
-    @Override
-    public String toString() {
-        return "Student{" +
-                "student_id=" + student_id +
-                ", first_name='" + first_name + '\'' +
-                ", last_name='" + last_name + '\'' +
-                ", guardian_name='" + guardian_name + '\'' +
-                '}';
+        return Objects.hash(sid, fname, lname, gname);
     }
 }
 

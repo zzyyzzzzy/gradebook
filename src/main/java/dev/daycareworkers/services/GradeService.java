@@ -9,4 +9,5 @@ public interface GradeService {
     Grade registerGrade(Grade grade);
 
     List<Grade> findGradesBySid(int id);
+    boolean deleteGradeById(int id);
 }

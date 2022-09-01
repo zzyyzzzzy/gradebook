@@ -5,6 +5,8 @@ import dev.daycareworkers.repos.StudentRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class StudentServiceImpl implements StudentService {
     @Autowired
@@ -16,7 +18,7 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public Student findByFirstNameAndLastName(String firstname, String lastname) {
+    public List<Student> findByFirstNameAndLastName(String firstname, String lastname) {
         return this.studentRepo.findByFnameAndLname(firstname, lastname);
     }
 

@@ -5,18 +5,29 @@ import java.util.Objects;
 @Entity
 @Table(name = "student")
 public class Student {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "student_id")
     private int student_id;
+
     @Column(name = "first_name")
     private String first_name;
+
     @Column(name = "last_name")
     private String last_name;
+
     @Column(name = "guardian_name")
     private String guardian_name;
 
     public Student() {
+    }
+
+    public Student(int student_id, String first_name, String last_name, String guardian_name) {
+        this.student_id = student_id;
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.guardian_name = guardian_name;
     }
 
     public int getStudent_id() {

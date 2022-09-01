@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @SpringBootTest
 @Transactional
 public class StudentRepoTests {
@@ -24,4 +26,19 @@ public class StudentRepoTests {
 //        Student savedStudent = this.studentRepo.save(student);
 
     }
+
+    @Test
+    void find_student_by_firstname_lastname(){
+
+        Student savedStudent = this.studentRepo.save(
+                new Student( 0, "adrian", "ledesma", "gaurdian")
+        );
+
+        List<Student> students = this.studentRepo.findByFnameAndLname(
+                savedStudent.getFname(), savedStudent.getLname()
+        );
+
+        Assertions.assertNotEquals(0, students.size());
+    }
+
 }

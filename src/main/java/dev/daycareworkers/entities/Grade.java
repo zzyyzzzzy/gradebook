@@ -8,12 +8,12 @@ import java.util.Objects;
 public class Grade {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "grade_id")
-    private int grade_id;
-    @Column(name = "student_id")
-    private int student_id;
-    @Column(name = "time_reported")
-    private long time_reported;
+    @Column(name = "gid")
+    private int gid;
+    @Column(name = "sid")
+    private int sid;
+    @Column(name = "treported")
+    private long treported;
     @Column(name = "note")
     private String note;
     @Column(name = "behavior")
@@ -22,36 +22,36 @@ public class Grade {
     public Grade() {
     }
 
-    public Grade(int grade_id, int student_id, long time_reported, String note, Behavior behavior) {
-        this.grade_id = grade_id;
-        this.student_id = student_id;
-        this.time_reported = time_reported;
+    public Grade(int gid, int sid, long treported, String note, Behavior behavior) {
+        this.gid = gid;
+        this.sid = sid;
+        this.treported = treported;
         this.note = note;
         this.behavior = behavior;
     }
 
-    public int getGrade_id() {
-        return grade_id;
+    public int getGid() {
+        return gid;
     }
 
-    public void setGrade_id(int grade_id) {
-        this.grade_id = grade_id;
+    public void setGid(int gid) {
+        this.gid = gid;
     }
 
-    public int getStudent_id() {
-        return student_id;
+    public int getSid() {
+        return sid;
     }
 
-    public void setStudent_id(int student_id) {
-        this.student_id = student_id;
+    public void setSid(int sid) {
+        this.sid = sid;
     }
 
-    public long getTime_reported() {
-        return time_reported;
+    public long getTreported() {
+        return treported;
     }
 
-    public void setTime_reported(long time_reported) {
-        this.time_reported = time_reported;
+    public void setTreported(long treported) {
+        this.treported = treported;
     }
 
     public String getNote() {
@@ -71,27 +71,27 @@ public class Grade {
     }
 
     @Override
+    public String toString() {
+        return "Grade{" +
+                "gid=" + gid +
+                ", sid=" + sid +
+                ", treported=" + treported +
+                ", note='" + note + '\'' +
+                ", behavior=" + behavior +
+                '}';
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Grade grade = (Grade) o;
-        return grade_id == grade.grade_id && student_id == grade.student_id && time_reported == grade.time_reported && note.equals(grade.note) && behavior == grade.behavior;
+        return gid == grade.gid && sid == grade.sid && treported == grade.treported && note.equals(grade.note) && behavior == grade.behavior;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(grade_id, student_id, time_reported, note, behavior);
-    }
-
-    @Override
-    public String toString() {
-        return "Grade{" +
-                "grade_id=" + grade_id +
-                ", student_id=" + student_id +
-                ", time_reported=" + time_reported +
-                ", note='" + note + '\'' +
-                ", behavior=" + behavior +
-                '}';
+        return Objects.hash(gid, sid, treported, note, behavior);
     }
 }
 //    create table grade(

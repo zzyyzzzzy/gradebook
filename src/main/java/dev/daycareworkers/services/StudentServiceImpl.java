@@ -12,7 +12,12 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public Student registerStudent(Student student) {
-        Student savedStudent = this.studentRepo.save(student);
-        return savedStudent;
+        return this.studentRepo.save(student);
     }
+
+    @Override
+    public Student findByFirstNameAndLastName(String firstname, String lastname) {
+        return this.studentRepo.findByFnameAndLname(firstname, lastname);
+    }
+
 }

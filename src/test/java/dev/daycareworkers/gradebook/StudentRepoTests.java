@@ -24,4 +24,19 @@ public class StudentRepoTests {
 //        Student savedStudent = this.studentRepo.save(student);
 
     }
+
+    @Test
+    void find_student_by_firstname_lastname(){
+
+        Student savedStudent = this.studentRepo.save(
+                new Student( 0, "adrian", "ledesma", "gaurdian")
+        );
+
+        Student foundStudent = this.studentRepo.findByFnameAndLname(
+                savedStudent.getFname(), savedStudent.getLname()
+        );
+
+        Assertions.assertNotEquals(0, foundStudent.getSid());
+    }
+
 }

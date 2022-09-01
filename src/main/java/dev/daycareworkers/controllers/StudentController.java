@@ -4,9 +4,7 @@ import dev.daycareworkers.entities.Student;
 import dev.daycareworkers.services.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class StudentController {
@@ -17,5 +15,11 @@ public class StudentController {
     @ResponseBody
     public Student registerStudent(@RequestBody Student student) {
         return this.studentService.registerStudent(student);
+    }
+
+    @GetMapping("/students")
+    @ResponseBody
+    public Student findByFirstNameAndLastName(@RequestParam String firstname, String lastname){
+        return this.studentService.findByFirstNameAndLastName(firstname, lastname);
     }
 }

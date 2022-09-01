@@ -28,4 +28,11 @@ public class GradeController {
         //int sid = Integer.parseInt(id);
         return this.gradeService.findGradesBySid(id);
     }
+
+    @DeleteMapping("/grades/{id}")
+    @ResponseBody
+    public boolean deleteGradeById(@PathVariable String id){
+        int gid = Integer.parseInt(id);
+        return this.gradeService.deleteGradeById(gid);
+    }
 }

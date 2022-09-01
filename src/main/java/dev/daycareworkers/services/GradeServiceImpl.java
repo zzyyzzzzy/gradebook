@@ -5,6 +5,8 @@ import dev.daycareworkers.repos.GradeRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class GradeServiceImpl implements GradeService {
     @Autowired
@@ -15,5 +17,10 @@ public class GradeServiceImpl implements GradeService {
 
         Grade savedGrade = this.gradeRepo.save(grade);
         return savedGrade;
+    }
+
+    @Override
+    public List<Grade> findGradesBySid(int id) {
+        return this.gradeRepo.findGradesBySid(id);
     }
 }

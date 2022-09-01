@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface GradeRepo extends JpaRepository<Grade, Integer> {
+    void deleteBySid(int sId);
 }

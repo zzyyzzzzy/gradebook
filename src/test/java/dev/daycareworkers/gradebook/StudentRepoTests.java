@@ -21,7 +21,5 @@ public class StudentRepoTests {
         Student student = new Student(0,"Billy","Bobson","William Bobson");
         Student savedStudent = this.studentRepo.save(student);
         Assertions.assertNotEquals(0,savedStudent.getSid());
-//        Student savedStudent = this.studentRepo.save(student);
-
     }
 }

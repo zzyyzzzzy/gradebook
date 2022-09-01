@@ -2,6 +2,7 @@ package dev.daycareworkers.services;
 
 import dev.daycareworkers.entities.Student;
 import dev.daycareworkers.exceptions.StudentNotFoundException;
+import dev.daycareworkers.repos.GradeRepo;
 import dev.daycareworkers.repos.StudentRepo;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -15,6 +16,8 @@ import java.sql.SQLException;
 public class StudentServiceImpl implements StudentService {
     @Autowired
     StudentRepo studentRepo;
+    @Autowired
+    GradeRepo gradeRepo;
     Logger logger = LogManager.getLogger();
 
     @Override
@@ -27,6 +30,7 @@ public class StudentServiceImpl implements StudentService {
     public boolean deleteStudentById(int id) {
         if(this.studentRepo.existsById(id)){
             try{
+                this.gradeRepo.deleteBySid(id);
                 this.studentRepo.deleteById(id);
                 return true;
             }catch (RuntimeException err){

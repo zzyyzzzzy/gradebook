@@ -12,4 +12,6 @@ public interface StudentService {
 
     boolean deleteStudentById(int id);
 
+    List<Student> retrieveAllStudent();
+
 }

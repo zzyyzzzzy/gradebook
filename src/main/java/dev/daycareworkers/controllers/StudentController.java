@@ -21,8 +21,12 @@ public class StudentController {
 
     @GetMapping("/students")
     @ResponseBody
-    public List<Student> findByFirstNameAndLastName(@RequestParam String firstname, String lastname){
-        return this.studentService.findByFirstNameAndLastName(firstname, lastname);
+    public List<Student> findByFirstNameAndLastName(@RequestParam(required = false) String firstname, String lastname){
+        if(firstname == null && lastname == null){
+            return this.studentService.retrieveAllStudent();
+        } else{
+            return this.studentService.findByFirstNameAndLastName(firstname, lastname);
+        }
     }
 
     @DeleteMapping("/students/{id}")
@@ -31,5 +35,6 @@ public class StudentController {
         int studentId = Integer.parseInt(id);
         return this.studentService.deleteStudentById(studentId);
     }
+
 
 }

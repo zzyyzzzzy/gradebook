@@ -29,7 +29,12 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public List<Student> findByFirstNameAndLastName(String firstname, String lastname) {
-        return this.studentRepo.findByFnameAndLname(firstname, lastname);
+        List<Student> students = this.studentRepo.findByFnameAndLname(firstname, lastname);
+        if(students.isEmpty()){
+            throw new StudentNotFoundException();
+        }else{
+            return students;
+        }
     }
     @Override
     @Transactional

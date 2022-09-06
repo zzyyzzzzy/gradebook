@@ -28,7 +28,14 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public List<Student> findByFirstNameAndLastName(String firstname, String lastname) {
-        return this.studentRepo.findByFnameAndLname(firstname, lastname);
+
+
+        List<Student> tempList = this.studentRepo.findByFnameAndLname(firstname, lastname);
+        if(tempList.size() == 0 ){
+            throw new StudentNotFoundException();
+        }else {
+            return tempList;
+        }
     }
     @Override
     public boolean deleteStudentById(int id) {

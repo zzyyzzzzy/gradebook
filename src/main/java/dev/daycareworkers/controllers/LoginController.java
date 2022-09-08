@@ -24,7 +24,7 @@ public class LoginController {
     @PostMapping("/login")
     public Token login(@RequestBody LoginCredentials loginCredentials) {
         Date currentTime = new Date(System.currentTimeMillis());
-        String message = "User " + loginCredentials.getUsername() + "logged in. Time: " + currentTime.toString();
+        String message = "User " + loginCredentials.getUsername() + " logged in. Time: " + currentTime.toString();
         jmsTemplate.convertAndSend("important-event-queue", message);
 
         return loginService.authenticateUser(loginCredentials);

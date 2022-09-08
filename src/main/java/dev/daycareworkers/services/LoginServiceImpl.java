@@ -1,7 +1,7 @@
 package dev.daycareworkers.services;
 
 import dev.daycareworkers.dtos.LoginCredentials;
-import dev.daycareworkers.entities.Token;
+import dev.daycareworkers.dtos.Token;
 import dev.daycareworkers.entities.UserAccount;
 import dev.daycareworkers.repos.UserAccountRepo;
 import org.springframework.beans.factory.annotation.Autowired;

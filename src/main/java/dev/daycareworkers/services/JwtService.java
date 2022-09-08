@@ -1,6 +1,6 @@
 package dev.daycareworkers.services;
 
-import dev.daycareworkers.entities.Token;
+import dev.daycareworkers.dtos.Token;
 
 public interface JwtService {
 

@@ -3,7 +3,7 @@ package dev.daycareworkers.services;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
-import dev.daycareworkers.entities.Token;
+import dev.daycareworkers.dtos.Token;
 import org.springframework.stereotype.Service;
 
 @Service

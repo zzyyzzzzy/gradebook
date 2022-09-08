@@ -1,4 +1,4 @@
-package dev.daycareworkers.entities;
+package dev.daycareworkers.dtos;
 
 public class Token {
 
@@ -6,7 +6,6 @@ public class Token {
 
     public Token() {
     }
-
     public Token(String token) {
         this.token = token;
     }

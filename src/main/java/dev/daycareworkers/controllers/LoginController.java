@@ -1,7 +1,7 @@
 package dev.daycareworkers.controllers;
 
 import dev.daycareworkers.dtos.LoginCredentials;
-import dev.daycareworkers.entities.Token;
+import dev.daycareworkers.dtos.Token;
 import dev.daycareworkers.services.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;

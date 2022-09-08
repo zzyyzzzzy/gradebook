@@ -1,6 +1,6 @@
 package dev.daycareworkers.gradebook;
 
-import dev.daycareworkers.entities.Token;
+import dev.daycareworkers.dtos.Token;
 import dev.daycareworkers.services.JwtService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

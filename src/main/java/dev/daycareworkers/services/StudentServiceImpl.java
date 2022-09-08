@@ -36,6 +36,12 @@ public class StudentServiceImpl implements StudentService {
             return students;
         }
     }
+
+    @Override
+    public List<Student> findByGuardianName(String gname) {
+        return this.studentRepo.findByGname(gname);
+    }
+
     @Override
     @Transactional
     public boolean deleteStudentById(int id) {

@@ -10,6 +10,8 @@ public interface StudentService {
 
     List<Student> findByFirstNameAndLastName(String firstname, String lastname);
 
+    List<Student> findByGuardianName(String gname);
+
     boolean deleteStudentById(int id);
 
     List<Student> retrieveAllStudent();

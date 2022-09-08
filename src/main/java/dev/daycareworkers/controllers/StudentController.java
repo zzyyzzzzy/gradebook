@@ -54,11 +54,16 @@ public class StudentController {
         if (jwtService.validateJWT(jwt)) {
             DecodedJWT decodedJWT = JWT.decode(jwt);
             String role = decodedJWT.getClaim("role").asString();
-
-            if(firstname == null && lastname == null){
-                return this.studentService.retrieveAllStudent();
-            } else{
-                return this.studentService.findByFirstNameAndLastName(firstname, lastname);
+            if (role.equals("teacher")) {
+                if (firstname == null && lastname == null) {
+                    return this.studentService.retrieveAllStudent();
+                } else {
+                    return this.studentService.findByFirstNameAndLastName(firstname, lastname);
+                }
+            }
+            else {
+                String gname = decodedJWT.getClaim("username").asString();
+                return this.studentService.findByGuardianName(gname);
             }
         }
         throw new InvalidJWTException();

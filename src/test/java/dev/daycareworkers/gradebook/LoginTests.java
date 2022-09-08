@@ -1,5 +1,6 @@
 package dev.daycareworkers.gradebook;
 
+import dev.daycareworkers.dtos.Token;
 import dev.daycareworkers.services.JwtService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,7 @@ public class LoginTests {
 
     @Test
     void create_jwt() {
-        String jwt = jwtService.createJwtWithUsernameAndRole("Terry", "Wizard");
+        Token jwt = jwtService.createJwtWithUsernameAndRole("Terry", "Wizard");
         System.out.println(jwt);
     }
 }

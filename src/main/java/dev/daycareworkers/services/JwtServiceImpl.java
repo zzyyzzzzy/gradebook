@@ -3,19 +3,20 @@ package dev.daycareworkers.services;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
+import dev.daycareworkers.dtos.Token;
 import org.springframework.stereotype.Service;
 
 @Service
 public class JwtServiceImpl implements JwtService {
 
-    private Algorithm algorithm = Algorithm.HMAC256("daycare workers");
+    private final Algorithm algorithm = Algorithm.HMAC256("daycare workers");
 
     @Override
-    public String createJwtWithUsernameAndRole(String username, String role) {
-
+    public Token createJwtWithUsernameAndRole(String username, String role) {
+        System.out.println("inside create JWT" + username + role);
         String jwt = JWT.create().withClaim("username", username).withClaim("role", role).sign(algorithm);
-
-        return jwt;
+        System.out.println("printing " + jwt);
+        return new Token(jwt);
     }
 
     @Override

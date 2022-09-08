@@ -10,9 +10,11 @@ import dev.daycareworkers.services.JwtService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 @CrossOrigin(origins = "*")
 @Controller
@@ -22,6 +24,8 @@ public class GradeController {
     GradeService gradeService;
     @Autowired
     JwtService jwtService;
+    @Autowired
+    JmsTemplate jmsTemplate;
 
     @PostMapping("/grades")
     @ResponseBody
@@ -31,6 +35,11 @@ public class GradeController {
             String role = decodedJWT.getClaim("role").asString();
 
             if (role.equals("teacher")) {
+                Date currentTime = new Date(System.currentTimeMillis());
+                String message = "New grade created for student id number " + grade.getSid() +
+                        ". Time: " + currentTime.toString();
+                jmsTemplate.convertAndSend("important-event-queue", message);
+
                 return new ResponseEntity<Grade>(this.gradeService.registerGrade(grade), HttpStatus.CREATED);
             }
             throw new UnauthorizedUserException();
@@ -62,6 +71,10 @@ public class GradeController {
 
             if (role.equals("teacher")) {
                 int gid = Integer.parseInt(id);
+                Date currentTime = new Date(System.currentTimeMillis());
+                String message = "Grade deleted from student id number " + gid + ". Time: " + currentTime.toString();
+                jmsTemplate.convertAndSend("important-event-queue", message);
+
                 return this.gradeService.deleteGradeById(gid);
             }
             throw new UnauthorizedUserException();

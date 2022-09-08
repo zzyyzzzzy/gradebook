@@ -20,6 +20,8 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	implementation group: 'com.auth0', name: 'java-jwt', version: '4.0.0'
 	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
+	implementation group: 'com.azure.spring', name: 'spring-cloud-azure-starter-servicebus-jms', version: '4.3.0'
+
 }
 
 tasks.named('test') {

@@ -8,9 +8,11 @@ import dev.daycareworkers.exceptions.UnauthorizedUserException;
 import dev.daycareworkers.services.JwtService;
 import dev.daycareworkers.services.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 @CrossOrigin(origins = "*")
 @Controller
@@ -21,6 +23,9 @@ public class StudentController {
     @Autowired
     JwtService jwtService;
 
+    @Autowired
+    JmsTemplate jmsTemplate;
+
     @PostMapping("/students")
     @ResponseBody
     public Student registerStudent(@RequestBody Student student, @RequestHeader("auth") String jwt) {
@@ -29,6 +34,11 @@ public class StudentController {
             String role = decodedJWT.getClaim("role").asString();
 
             if (role.equals("teacher")) {
+                Date currentTime = new Date(System.currentTimeMillis());
+                String message = "New student " + student.getFname() + " " + student.getLname() +
+                        " created. Time: " + currentTime.toString();
+                jmsTemplate.convertAndSend("important-event-queue", message);
+
                 return this.studentService.registerStudent(student);
             }
             throw new UnauthorizedUserException();
@@ -63,6 +73,10 @@ public class StudentController {
 
             if (role.equals("teacher")) {
                 int studentId = Integer.parseInt(id);
+                Date currentTime = new Date(System.currentTimeMillis());
+                String message = "student id number " + studentId + " deleted. Time: " + currentTime.toString();
+                jmsTemplate.convertAndSend("important-event-queue", message);
+
                 return this.studentService.deleteStudentById(studentId);
             }
             throw new UnauthorizedUserException();

@@ -49,7 +49,6 @@ public class GradeController {
             //int sid = Integer.parseInt(id);
             return this.gradeService.findGradesBySid(id);
 
-            throw new UnauthorizedUserException();
         }
         throw new InvalidJWTException();
     }

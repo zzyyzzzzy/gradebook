@@ -62,7 +62,7 @@ public class StudentController {
                 }
             }
             else {
-                String gname = decodedJWT.getClaim("username").asString();
+                String gname = decodedJWT.getClaim("fullname").asString();
                 return this.studentService.findByGuardianName(gname);
             }
         }

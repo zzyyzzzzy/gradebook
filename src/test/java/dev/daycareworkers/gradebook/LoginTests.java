@@ -26,7 +26,7 @@ public class LoginTests {
 
     @Test
     void create_jwt() {
-        Token jwt = jwtService.createJwtWithUsernameAndRole("Terry", "Wizard");
+        Token jwt = jwtService.createJwtWithUsernameRoleAndFullname("Terry", "Wizard", "Terry Tim");
         System.out.println(jwt);
     }
 
@@ -40,7 +40,7 @@ public class LoginTests {
     @Test
     public void authenticate_user_password_mismatch_test() {
         LoginCredentials loginCredentials = new LoginCredentials("abc", "efg");
-        UserAccount userAccount = new UserAccount("", "abc", "EMP", "teacher");
+        UserAccount userAccount = new UserAccount("", "abc", "EMP", "teacher", "Jim Joe");
         Mockito.when(userAccountRepo.findByUsername(loginCredentials.getUsername())).thenReturn(userAccount);
         Assertions.assertThrows(PasswordMismatchException.class, () -> loginService.authenticateUser(loginCredentials));
     }

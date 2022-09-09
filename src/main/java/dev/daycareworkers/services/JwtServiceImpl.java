@@ -12,9 +12,10 @@ public class JwtServiceImpl implements JwtService {
     private final Algorithm algorithm = Algorithm.HMAC256("daycare workers");
 
     @Override
-    public Token createJwtWithUsernameAndRole(String username, String role) {
+    public Token createJwtWithUsernameRoleAndFullname(String username, String role, String fullname) {
         System.out.println("inside create JWT" + username + role);
-        String jwt = JWT.create().withClaim("username", username).withClaim("role", role).sign(algorithm);
+        String jwt = JWT.create().withClaim("username", username)
+                .withClaim("role", role).withClaim("fullname", fullname).sign(algorithm);
         System.out.println("printing " + jwt);
         return new Token(jwt);
     }

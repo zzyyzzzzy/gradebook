@@ -8,7 +8,8 @@
 name: Java CI with Gradle
 env:
   PROJ2_SQL_DB: ${{secrets.PROJ2_SQL_DB}}
-
+  PROJ2_MG_DB: ${{secrets.PROJ2_MG_DB}}
+  PROJ2_MSG_QUEUE: ${{secrets.PROJ2_MSG_QUEUE}}
 on:
   push:
     branches: [ "master" ]

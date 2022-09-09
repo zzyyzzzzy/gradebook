@@ -14,13 +14,20 @@ import java.util.List;
 
 @Service
 public class StudentServiceImpl implements StudentService {
+
     @Autowired
     StudentRepo studentRepo;
-
     @Autowired
     GradeRepo gradeRepo;
 
     Logger logger = LogManager.getLogger();
+
+    public StudentServiceImpl() {
+    }
+
+    public StudentServiceImpl(StudentRepo studentRepo) {
+        this.studentRepo = studentRepo;
+    }
 
     @Override
     public Student registerStudent(Student student) {

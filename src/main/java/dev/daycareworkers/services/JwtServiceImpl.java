@@ -13,10 +13,8 @@ public class JwtServiceImpl implements JwtService {
 
     @Override
     public Token createJwtWithUsernameRoleAndFullname(String username, String role, String fullname) {
-        System.out.println("inside create JWT" + username + role);
         String jwt = JWT.create().withClaim("username", username)
                 .withClaim("role", role).withClaim("fullname", fullname).sign(algorithm);
-        System.out.println("printing " + jwt);
         return new Token(jwt);
     }
 

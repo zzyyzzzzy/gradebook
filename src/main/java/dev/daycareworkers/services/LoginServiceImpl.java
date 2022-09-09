@@ -18,6 +18,12 @@ public class LoginServiceImpl implements LoginService {
     @Autowired
     UserAccountRepo userAccountRepo;
 
+    public LoginServiceImpl() {
+    }
+
+    public LoginServiceImpl(UserAccountRepo userAccountRepo) {
+        this.userAccountRepo = userAccountRepo;
+    }
 
     @Override
     public Token authenticateUser(LoginCredentials loginCredentials) {

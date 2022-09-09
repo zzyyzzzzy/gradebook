@@ -17,6 +17,12 @@ public class GradeServiceImpl implements GradeService {
     GradeRepo gradeRepo;
     Logger logger = LogManager.getLogger();
 
+    public GradeServiceImpl() {
+    }
+
+    public GradeServiceImpl(GradeRepo gradeRepo) {
+        this.gradeRepo = gradeRepo;
+    }
 
     @Override
     public Grade registerGrade(Grade grade) {

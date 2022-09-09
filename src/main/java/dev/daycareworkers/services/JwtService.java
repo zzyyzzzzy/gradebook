@@ -4,7 +4,7 @@ import dev.daycareworkers.dtos.Token;
 
 public interface JwtService {
 
-    Token createJwtWithUsernameAndRole(String username, String Role);
+    Token createJwtWithUsernameRoleAndFullname(String username, String role, String fullname);
 
     boolean validateJWT(String jwt);
 }

@@ -35,6 +35,7 @@ public class LoginServiceImpl implements LoginService {
         if (!userAccount.getPassword().equals(loginCredentials.getPassword())){
             throw new PasswordMismatchException();
         }
-        return jwtService.createJwtWithUsernameAndRole(userAccount.getUsername(), userAccount.getRole());
+        return jwtService.createJwtWithUsernameRoleAndFullname(userAccount.getUsername(),
+                userAccount.getRole(), userAccount.getFullname());
     }
 }

@@ -12,15 +12,17 @@ public class UserAccount {
     private String username;
     private String password;
     private String role;
+    private String fullname;
 
     public UserAccount() {
     }
 
-    public UserAccount(String id, String username, String password, String role) {
+    public UserAccount(String id, String username, String password, String role, String fullname) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.role = role;
+        this.fullname = fullname;
     }
 
     public String getId() {
@@ -55,6 +57,14 @@ public class UserAccount {
         this.role = role;
     }
 
+    public String getFullname() {
+        return fullname;
+    }
+
+    public void setFullname(String fullname) {
+        this.fullname = fullname;
+    }
+
     @Override
     public String toString() {
         return "UserAccount{" +
@@ -62,6 +72,7 @@ public class UserAccount {
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", role='" + role + '\'' +
+                ", fullname='" + username + '\'' +
                 '}';
     }
 }

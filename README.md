@@ -1,16 +1,1 @@
-# gradebook
-project 2
-
-## zheng
-  - delete students
-  - delete grades
-  
-## stephen
-  - add students
-  - View grades for a student	
-  
-## Adrian
-  - search for student by name
-  
-## Josh
-  - add grades
+This Spring application is desgined to allow authorized accounts to view all students and grades in a daycare while allowing guardians of students to view their child's grades.
